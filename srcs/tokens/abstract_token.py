@@ -9,6 +9,12 @@ class AbstractToken:
         base = f'{name}("{self.piece_of_string}")'
         return base
 
+    def __eq__(self, other):
+        if self.__class__ is other.__class__:
+            if self.content == other.content:
+                return True
+        return False
+
     def prove_of_piece(self):
         raise NotImplementedError()
 

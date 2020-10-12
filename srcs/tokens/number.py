@@ -26,6 +26,19 @@ class Number(AbstractToken):
 
     def get_content(self):
         if '.' in self.piece_of_string:
-            return float(self.piece_of_string)
+            result = float(self.piece_of_string)
         else:
-            int(self.piece_of_string)
+            result = int(self.piece_of_string)
+        return result
+
+    def __add__(self, other):
+        new_content = self.content + other.content
+        return self.__class__(str(new_content))
+
+    def __mul__(self, other):
+        new_content = self.content * other.content
+        return self.__class__(str(new_content))
+
+    def __sub__(self, other):
+        new_content = self.content - other.content
+        return self.__class__(str(new_content))

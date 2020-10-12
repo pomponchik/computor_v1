@@ -9,3 +9,9 @@ class Sign(AbstractToken):
 
     def get_content(self):
         return self.piece_of_string
+
+    def invert(self):
+        if self.content == '+':
+            self.content = '-'
+        elif self.content == '-':
+            self.content = '+'
