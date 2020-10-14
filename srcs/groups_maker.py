@@ -1,6 +1,7 @@
 from srcs.tokens.sign import Sign
 from srcs.tokens.group import Group
 from srcs.expression import Expression
+from srcs.utils.error import error
 
 
 class GroupsMaker:
@@ -13,6 +14,8 @@ class GroupsMaker:
         sign = Sign('+')
         for index, token in enumerate(tokens):
             if token in dilimiters_list:
+                if not item:
+                    error(f'double of the sign "{token.content}"')
                 result.append({'sign': sign, 'tokens': item})
                 item = []
                 sign = token

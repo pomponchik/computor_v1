@@ -6,8 +6,7 @@ from srcs.tokens.unknown_variable import UnknownVariable
 class Letter(AbstractToken):
     def prove_of_piece(self):
         if not ('^' in self.piece_of_string):
-            raise ValueError(self.piece_of_string)
-            error(f'the token "{self.piece_of_string}" must be contained a sign "^"')
+            self.piece_of_string = f'{self.piece_of_string}^1'
         splitted_piece = self.piece_of_string.split('^')
         if '' in splitted_piece:
             error(f'token "{self.piece_of_string}" is not completed')
@@ -16,7 +15,7 @@ class Letter(AbstractToken):
         if not splitted_piece[0].isalpha():
             error(f'the token "{self.piece_of_string}" most be contained a letter of the variable on the second position')
         if not splitted_piece[1].isdigit():
-            error(f'the token "{self.piece_of_string}" most be contained a integer number on the second position')
+            error(f'the token "{self.piece_of_string}" most be contained only an integer number on the second position')
         if int(splitted_piece[1]) < 0:
             error(f'the power "{splitted_piece[1]}" of the variable "{splitted_piece[0]}" in the token "{self.piece_of_string}" is too little')
 

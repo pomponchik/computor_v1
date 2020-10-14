@@ -40,21 +40,44 @@ class Expression:
             return "The polynomial degree is strictly greater than 2, I can't solve."
         if self.degree == 0:
             return 'The solution is:\n[-∞:+∞]'
+        elif self.degree == 1:
+            return self.solve_power_one()
         discriminant = self.discriminant()
         if self['a'] == 0:
             return 'Calculating the discriminant requires division by zero, and the equation has no solution.'
         if discriminant < 0:
             return 'The discriminant is less than zero, and the equation has no solutions.'
         elif discriminant == 0:
-            result = -1 * (self['b'] / (2 * self['a']))
+            result = self.round(-1 * (self['b'] / (2 * self['a'])))
             return f'The solution is:\n{result}'
-        result_1 = (-1 * self['b'] + self.root(discriminant)) / (2 * self['a'])
-        result_2 = (-1 * self['b'] - self.root(discriminant)) / (2 * self['a'])
+        result_1 = self.round(-1 * self['b'] + self.root(discriminant)) / (2 * self['a'])
+        result_2 = self.round(-1 * self['b'] - self.root(discriminant)) / (2 * self['a'])
         return f'Discriminant is strictly positive, the two solutions are:\n{result_1}\n{result_2}'
+
+    def solve_power_one(self):
+        number = self[0].number.content
+        if not number:
+            return 'The solution is:\n0'
+        number *= -1
+        mult = self[1].number.content
+        if mult > 0:
+            result = self.round(number / mult)
+            return f'The solution is:\n{result}'
+        elif mult < 0:
+            result = self.round((1 / mult) * number)
+            return f'The solution is:\n{result}'
+        return 'There is an error in the equation (the result of multiplication by 0 is not equal to 0), it is impossible to calculate.'
+
 
     def discriminant(self):
         result = self['b'] * self['b'] - 4 * self['a'] * self['c']
         return result
+
+    @staticmethod
+    def round(number):
+        if int(number) == number:
+            return int(number)
+        return number
 
     @staticmethod
     def root(number, precision_factor=0.0001):
@@ -84,7 +107,8 @@ class Expression:
         result = 0
         for item in self.redused_items:
             content = item.letter.content
-            if content > result:
+            mult = item.number.content
+            if content > result and mult:
                 result = content
         return result
 

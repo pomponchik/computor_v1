@@ -23,6 +23,8 @@ class Tokenizator:
             return Number
         elif '^' in piece_of_string:
             return Letter
+        elif len(piece_of_string) == 1 and piece_of_string.isalpha():
+            return Letter
         elif piece_of_string in ('+', '-', '*', '^', '.', '='):
             return Sign
         error(f'unidentified token {piece_of_string}')
