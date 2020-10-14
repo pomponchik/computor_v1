@@ -26,10 +26,7 @@ class Group:
         self.number *= Number('-1')
         return self
 
-    def __str__(self):
-        result = f'{self.number.content} * {UnknownVariable().letter}^{self.letter.content}'
-        return result
-
     def __repr__(self):
-        result = f'{self.number.content} * {UnknownVariable().letter}^{self.letter.content}'
-        return result
+        if self.letter.content:
+            return f'{self.number.content} * {UnknownVariable().letter}^{self.letter.content}'
+        return f'{self.number.content}'
