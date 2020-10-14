@@ -41,6 +41,8 @@ class Expression:
         if self.degree == 0:
             return 'The solution is:\n[-∞:+∞]'
         discriminant = self.discriminant()
+        if self['a'] == 0:
+            return 'Calculating the discriminant requires division by zero, and the equation has no solution.'
         if discriminant < 0:
             return 'The discriminant is less than zero, and the equation has no solutions.'
         elif discriminant == 0:
@@ -68,7 +70,7 @@ class Expression:
 
     def get_full_form(self):
         if self.degree == 0:
-            return self.redused_items
+            return self.redused_items, self.grouping_by_power(self.redused_items)
         groups = self.grouping_by_power(self.redused_items)
         sign = Sign('+')
         for number in range(self.degree):

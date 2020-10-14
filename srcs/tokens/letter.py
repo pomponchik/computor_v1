@@ -7,7 +7,7 @@ class Letter(AbstractToken):
     def prove_of_piece(self):
         if not ('^' in self.piece_of_string):
             raise ValueError(self.piece_of_string)
-            error(f'the token "{self.piece_of_string}" most be contained a sign "^"')
+            error(f'the token "{self.piece_of_string}" must be contained a sign "^"')
         splitted_piece = self.piece_of_string.split('^')
         if '' in splitted_piece:
             error(f'token "{self.piece_of_string}" is not completed')
