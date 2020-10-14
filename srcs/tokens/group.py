@@ -11,7 +11,13 @@ class Group:
         self.tokens = tokens
         self.prove_tokens()
         self.number = self.type_items(Number, '1')
+        self.apply_sign()
         self.letter = self.type_items(Letter, f'{UnknownVariable().letter}^0')
+
+    def apply_sign(self):
+        if self.sign == Sign('-'):
+            self.number *= Number('-1')
+            self.sign = Sign('+')
 
     def prove_tokens(self):
         if not len(self.tokens):

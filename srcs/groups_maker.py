@@ -23,6 +23,7 @@ class GroupsMaker:
                 item.append(token)
         if item:
             result.append({'sign': sign, 'tokens': item})
+
         return result
 
     def get_pieces(self):
