@@ -24,7 +24,6 @@ class GroupsMaker:
 
     def get_pieces(self):
         halfs = self.cut_by_token([Sign('=')], self.tokens)
-        #print(halfs)
         first_half = self.cut_by_token([Sign('-'), Sign('+')], halfs[0]['tokens'])
         second_half = self.cut_by_token([Sign('-'), Sign('+')], halfs[1]['tokens'])
         first_half = [Group(**x) for x in first_half]

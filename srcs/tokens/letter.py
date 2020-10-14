@@ -17,8 +17,8 @@ class Letter(AbstractToken):
             error(f'the token "{self.piece_of_string}" most be contained a letter of the variable on the second position')
         if not splitted_piece[1].isdigit():
             error(f'the token "{self.piece_of_string}" most be contained a integer number on the second position')
-        if int(splitted_piece[1]) > 2 or int(splitted_piece[1]) < 0:
-            error(f'the power "{splitted_piece[1]}" of the variable "{splitted_piece[0]}" in the token "{self.piece_of_string}" is too large')
+        if int(splitted_piece[1]) < 0:
+            error(f'the power "{splitted_piece[1]}" of the variable "{splitted_piece[0]}" in the token "{self.piece_of_string}" is too little')
 
     def get_content(self):
         splitted_piece = self.piece_of_string.split('^')
