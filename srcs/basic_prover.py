@@ -43,7 +43,6 @@ class BasicProver:
                     error(f'extra sign "{sign}" in the end of the {index} half of the expression')
         return True
 
-
     def equal_sign_is_only_one(self):
         count = 0
         for letter in self.string:

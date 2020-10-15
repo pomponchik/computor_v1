@@ -52,8 +52,8 @@ class Expression:
         elif discriminant == 0:
             result = self.round(-1 * (self['b'] / (2 * self['a'])))
             return f'The solution is:\n{result}'
-        result_1 = self.round(-1 * self['b'] + self.root(discriminant)) / (2 * self['a'])
-        result_2 = self.round(-1 * self['b'] - self.root(discriminant)) / (2 * self['a'])
+        result_1 = self.round((-1 * self['b'] + self.root(discriminant)) / (2 * self['a']))
+        result_2 = self.round((-1 * self['b'] - self.root(discriminant)) / (2 * self['a']))
         return f'Discriminant is strictly positive, the two solutions are:\n{result_1}\n{result_2}'
 
     def solve_power_one(self):
@@ -70,13 +70,13 @@ class Expression:
             return f'The solution is:\n{result}'
         return 'There is an error in the equation (the result of multiplication by 0 is not equal to 0), it is impossible to calculate.'
 
-
     def discriminant(self):
         result = self['b'] * self['b'] - 4 * self['a'] * self['c']
         return result
 
     @staticmethod
     def round(number):
+        print(number)
         if int(number) == number:
             return int(number)
         return number

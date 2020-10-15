@@ -34,9 +34,9 @@ class Normalizator:
                 if prev_elem and prev_elem != ' ':
                     element = ' ' + element
             elif element == '-':
-                if next_elem and next_elem != ' ' and not element.isdigit():
+                if next_elem and next_elem != ' ' and not next_elem.isdigit():
                     element += ' '
-                if prev_elem and prev_elem != ' ':
+                if prev_elem and prev_elem != ' ' and not prev_elem.isdigit():
                     element = ' ' + element
             new_elements.append(element)
         return ''.join(new_elements)
