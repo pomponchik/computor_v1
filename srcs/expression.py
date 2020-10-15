@@ -39,6 +39,8 @@ class Expression:
         if self.degree > 2:
             return "The polynomial degree is strictly greater than 2, I can't solve."
         if self.degree == 0:
+            if self[0].number.content != 0:
+                return f'The equation is made incorrectly, it follows that "{self[0].number.content} = 0". I can' + "'" + 't solve.'
             return 'The solution is:\n[-∞:+∞]'
         elif self.degree == 1:
             return self.solve_power_one()
