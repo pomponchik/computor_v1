@@ -76,7 +76,6 @@ class Expression:
 
     @staticmethod
     def round(number):
-        print(number)
         if int(number) == number:
             return int(number)
         return number
