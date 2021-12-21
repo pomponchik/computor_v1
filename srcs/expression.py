@@ -48,7 +48,10 @@ class Expression:
         if self['a'] == 0:
             return 'Calculating the discriminant requires division by zero, and the equation has no solution.'
         if discriminant < 0:
-            return 'The discriminant is less than zero, and the equation has no solutions.'
+            discriminant *= -1
+            result_1 = self.round((-1 * self['b'] + self.root(discriminant)) / (2 * self['a']))
+            result_2 = self.round((-1 * self['b'] - self.root(discriminant)) / (2 * self['a']))
+            return f'Discriminant is strictly negative, the two complex solutions are:\n{result_1}i\n{result_2}i'
         elif discriminant == 0:
             result = self.round(-1 * (self['b'] / (2 * self['a'])))
             return f'The solution is:\n{result}'
