@@ -49,9 +49,9 @@ class Expression:
             return 'Calculating the discriminant requires division by zero, and the equation has no solution.'
         if discriminant < 0:
             discriminant *= -1
-            result_1 = self.round((-1 * self['b'] + self.root(discriminant)) / (2 * self['a']))
-            result_2 = self.round((-1 * self['b'] - self.root(discriminant)) / (2 * self['a']))
-            return f'Discriminant is strictly negative, the two complex solutions are:\n{result_1}i\n{result_2}i'
+            first_part = self.round((-1 * self['b']) / (2 * self['a']))
+            second_part = self.round(self.root(discriminant) / (2 * self['a']))
+            return f'Discriminant is strictly negative, the two complex solutions are:\n{first_part} + {second_part}i\n{first_part} - {second_part}i'
         elif discriminant == 0:
             result = self.round(-1 * (self['b'] / (2 * self['a'])))
             return f'The solution is:\n{result}'

@@ -30,8 +30,8 @@ $ python3 computor.py "3 * x ^ 2 - 6 * x + 5 = 0"
 Reduced form: 5 + -6 * x^1 + 3 * x^2 = 0
 Polynomial degree: 2
 Discriminant is strictly negative, the two complex solutions are:
-1.816496580932786i
-0.18350341906721424i
+1 + 0.8164965809327858i
+1 - 0.8164965809327858i
 ```
 
 В случае, когда решить уравнение невозможно, программа также напишет об этом:
