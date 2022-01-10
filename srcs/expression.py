@@ -19,7 +19,7 @@ class Expression:
         if type(key) is int:
             if key in self.full_form_dict:
                 return self.full_form_dict[key][0]
-            elif key > 0:
+            elif key >= 0:
                 return Group(Sign('+'), [Letter(f'{UnknownVariable().letter}^{key}'), Number('0')])
             raise KeyError(f'Expression "{self}" has no element with the degree "{key}"')
         elif type(key) is str:
